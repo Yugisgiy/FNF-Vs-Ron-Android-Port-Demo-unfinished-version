@@ -10,6 +10,7 @@
     {
       "name": "openfl",
       "type": "git",
+      "dir": null,
       "ref": "9.3.2",
       "url": "https://github.com/mcagabe19-stuff/openfl"
     },
@@ -46,8 +47,8 @@
       "name": "hxCodec",
       "type": "git",
       "dir": null,
-      "ref": "cafc58e9046505ff93fa659339808b53faa5d6f3",
-      "url": "https://github.com/polybiusproxy/hxCodec"
+      "ref": "master",
+      "url": "https://github.com/MobilePorting/hxCodec"
     },
     {
       "name": "SScript",
