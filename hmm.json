@@ -5,12 +5,13 @@
       "type": "git",
       "dir": null,
       "ref": "main",
-      "url": "https://github.com/mcagabe19-stuff/lime-8.2.1"
+      "url": "https://github.com/mcagabe19-stuff/lime"
     },
     {
       "name": "openfl",
-      "type": "haxelib",
-      "version": "9.3.2"
+      "type": "git",
+      "ref": "9.3.2",
+      "url": "https://github.com/mcagabe19-stuff/openfl"
     },
     {
       "name": "flixel",
