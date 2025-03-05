@@ -6,7 +6,6 @@ import objects.Alphabet;
 
 class VisualsUISubState extends BaseOptionsMenu
 {
-	public static var pauseMusics:Array<String> = ['None', 'Breakfast', 'Tea Time'];
 	var noteOptionID:Int = -1;
 	var notes:FlxTypedGroup<StrumNote>;
 	var notesTween:Array<FlxTween> = [];
@@ -134,7 +133,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			"What song do you prefer for the Pause Screen?",
 			'pauseMusic',
 			'string',
-			pauseMusics);
+			['None', 'Breakfast', 'Tea Time']);
 		addOption(option);
 		option.onChange = onChangePauseMusic;
 		
