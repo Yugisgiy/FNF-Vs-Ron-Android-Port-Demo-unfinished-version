@@ -64,7 +64,7 @@ class ControlsSubState extends MusicBeatSubstate
 	
 	public function new()
 	{
-                controls.isInSubstate = true;
+		controls.isInSubstate = true;
 
 		super();
 
@@ -113,7 +113,7 @@ class ControlsSubState extends MusicBeatSubstate
 		text.setScale(0.4);
 		add(text);
 
-		addTouchPad("LEFT_FULL", "A_B_C");
+		addTouchPad("NONE", "B");
 
 		createTexts();
 	}
