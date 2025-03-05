@@ -54,7 +54,6 @@ class DesktopMenu extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the desktop", null);
 		#end
-		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
 		persistentUpdate = persistentDraw = true;
 		var iconI:Int = 0;
