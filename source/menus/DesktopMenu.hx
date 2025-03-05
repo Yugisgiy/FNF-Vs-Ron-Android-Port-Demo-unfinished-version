@@ -105,7 +105,6 @@ class DesktopMenu extends MusicBeatState
 							//	FlxG.camera.fade(0x88FFFFFF, 0.6, false);
 							//	new FlxTimer().start(2, function(tmr:FlxTimer){ FlxG.switchState(new StoryMenuState()); FlxG.camera.fade(0x88FFFFFF, 0, true);});
 							//});
-							openSubState(new misc.CustomFadeTransition(.8, false));
 							new FlxTimer().start(.5, function(tmr:FlxTimer)
 							{
 								PlayState.storyPlaylist = ["Ron","Wasted","Ayo"];
@@ -120,7 +119,6 @@ class DesktopMenu extends MusicBeatState
 								PlayState.campaignScore = 0;
 								PlayState.campaignMisses = 0;
 								backend.WeekData.reloadWeekFiles(true);
-								video.playMP4(Paths.video('ron'), new PlayState(), false, false, false);
 							});
 						}
 						else if (icons[i].length != 0)
@@ -148,7 +146,6 @@ class DesktopMenu extends MusicBeatState
 		FlxG.cameras.reset(camWhat);
 		FlxG.cameras.add(camText);
 		FlxCamera.defaultCameras = [camWhat];
-		CustomFadeTransition.nextCamera = camText;
 		super.create();
 	}
 	override function update(elapsed:Float) {
