@@ -1,10 +1,6 @@
-package menus;
+package states;
 
 import flixel.addons.display.FlxBackdrop;
-#if desktop
-import important.Discord.DiscordClient;
-import sys.thread.Thread;
-#end
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -27,7 +23,7 @@ import flixel.group.FlxGroup;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.sound.FlxSound;
+import flixel.system.FlxSound;
 import flixel.system.ui.FlxSoundTray;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
@@ -63,7 +59,6 @@ class TitleState extends MusicBeatState
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
 	var time:Float = 0;
-	var chromeOffset = (ClientPrefs.rgbintense/350);
 	var curWacky:Array<String> = [];
 
 	var logoBl:FlxSprite;
@@ -74,7 +69,6 @@ class TitleState extends MusicBeatState
 	var titleText:FlxSprite;
 	var animbarScrt:FlxBackdrop;
 	var animbarScrb:FlxBackdrop;
-	var swagShader:ColorSwap = null;
 
 	var wackyImage:FlxSprite;
 
@@ -113,20 +107,17 @@ class TitleState extends MusicBeatState
 		FlxG.sound.volumeUpKeys = volumeUpKeys;
 		//FlxG.keys.preventDefaultKeys = [TAB];
 
-		important.PlayerSettings.init();
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
 		// DEBUG BULLSHIT
 
-		swagShader = new ColorSwap();
 		super.create();
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
 		ClientPrefs.loadPrefs();
 
-		important.Highscore.load();
 
 		// IGNORE THIS!!!
 		titleJSON = Json.parse(Paths.getTextFromFile('images/gfDanceTitle.json'));
