@@ -19,9 +19,6 @@ import backend.Controls;
 
 using StringTools;
 
-#if desktop
-import important.Discord.DiscordClient;
-#end
 
 class MasterFreeplayState extends MusicBeatState
 {
@@ -136,13 +133,10 @@ class MasterFreeplayState extends MusicBeatState
 		switch(curSelectedMaster) {
 			case 0:
 				cooltext.text = "MAIN";
-				FreeplayState.mode = 'main';
 			case 1:
 				cooltext.text = "CLASSIC";
-				FreeplayState.mode = 'classic';
 			case 2:
 				cooltext.text = "EXTRAS";
-				FreeplayState.mode = 'extras';
 		}
 		cooltext.screenCenter(X);
 		if(controls.UI_RIGHT_P)
@@ -163,7 +157,7 @@ class MasterFreeplayState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			accepted = true;
 			
-			MusicBeatState.switchState(new menus.FreeplayState());
+			MusicBeatState.switchState(new states.FreeplayState());
 		}
 
 		if(controls.BACK)
