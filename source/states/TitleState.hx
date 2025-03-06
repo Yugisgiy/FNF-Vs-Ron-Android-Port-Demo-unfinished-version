@@ -219,7 +219,6 @@ class TitleState extends MusicBeatState
 
 		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
 		gfDance.animation.addByPrefix('idle', "GF Dancing Beat", 24);
-		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		gfDance.scale.set(0.5,0.5);
 		gfDance.x += 320;
 		gfDance.y -= 200;
@@ -266,7 +265,6 @@ class TitleState extends MusicBeatState
 		
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
 		logo.screenCenter();
-		logo.antialiasing = ClientPrefs.globalAntialiasing;
 		// add(logo);
 		
 		blackScreen = new FlxSprite();
@@ -298,7 +296,6 @@ class TitleState extends MusicBeatState
 		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
-		ngSpr.antialiasing = ClientPrefs.globalAntialiasing;
 
 		var blackeffect:FlxSprite = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
 		blackeffect.updateHitbox();
@@ -340,14 +337,11 @@ class TitleState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		time += elapsed;
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
-		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
 		if (skippedIntro) {
 			logoBl.angle = Math.sin(-time*5)/8;
 			logoBi.angle = logoBl.angle;
 			logoBl.screenCenter(XY);
 			titleText.angle += Math.sin(-time*8)/16;
-			Shaders["colorizer"].shader.data.colors.value = time/2;
 		}
 
 		if (FlxG.sound.music != null)
@@ -440,8 +434,6 @@ class TitleState extends MusicBeatState
 	function fuckyou(){
 		#if desktop
 		MusicBeatState.switchState(new menus.MainMenuState());
-		#else
-		MusicBeatState.switchState(new menus.PiracyScreen());
 		#end
 	}
 
