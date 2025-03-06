@@ -107,7 +107,7 @@ class TitleState extends MusicBeatState
 		FlxG.sound.volumeUpKeys = volumeUpKeys;
 		//FlxG.keys.preventDefaultKeys = [TAB];
 
-		important.PlayerSettings.init();
+		backend.PlayerSettings.init();
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
@@ -197,7 +197,6 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
 
-		Conductor.changeBPM(titleJSON.bpm);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite();
@@ -220,16 +219,13 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		swagShader = new ColorSwap();
 		gfDance = new FlxSprite();
 
 		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
 		gfDance.animation.addByPrefix('idle', "GF Dancing Beat", 24);
-		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		gfDance.scale.set(0.5,0.5);
 		gfDance.x += 320;
 		gfDance.y -= 200;
-		gfDance.shader = swagShader.shader;
 		add(gfDance);
 
 		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
@@ -273,7 +269,6 @@ class TitleState extends MusicBeatState
 		
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
 		logo.screenCenter();
-		logo.antialiasing = ClientPrefs.globalAntialiasing;
 		// add(logo);
 		
 		blackScreen = new FlxSprite();
@@ -305,7 +300,6 @@ class TitleState extends MusicBeatState
 		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
-		ngSpr.antialiasing = ClientPrefs.globalAntialiasing;
 
 		var blackeffect:FlxSprite = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
 		blackeffect.updateHitbox();
@@ -352,7 +346,6 @@ class TitleState extends MusicBeatState
 			logoBi.angle = logoBl.angle;
 			logoBl.screenCenter(XY);
 			titleText.angle += Math.sin(-time*8)/16;
-			Shaders["colorizer"].shader.data.colors.value = time/2;
 		}
 
 		if (FlxG.sound.music != null)
@@ -425,9 +418,6 @@ class TitleState extends MusicBeatState
 
 		if(swagShader != null)
 		{
-			if(controls.UI_LEFT) swagShader.hue -= elapsed * 0.1;
-			if(controls.UI_RIGHT) swagShader.hue += elapsed * 0.1;
-		}
 
 		if (!pressedEnter && !pressedSkip && !transitioning && skippedIntro)
 		{
