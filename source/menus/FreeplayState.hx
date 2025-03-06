@@ -1,9 +1,5 @@
 package menus;
 
-import misc.CustomFadeTransition;
-#if desktop
-import important.Discord.DiscordClient;
-#end
 import backend.Highscore;
 import backend.Song;
 import objects.HealthIcon;
