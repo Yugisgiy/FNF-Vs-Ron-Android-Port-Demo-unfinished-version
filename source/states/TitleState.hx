@@ -412,7 +412,6 @@ class TitleState extends MusicBeatState
 			skipIntro();
 		}
 
-		if(swagShader != null)
 		{
 			if(controls.UI_LEFT) swagShader.hue -= elapsed * 0.1;
 			if(controls.UI_RIGHT) swagShader.hue += elapsed * 0.1;
@@ -560,7 +559,6 @@ class TitleState extends MusicBeatState
 			remove(ngSpr);
 			remove(credGroup);
 			FlxG.camera.flash(FlxColor.WHITE, 4);
-			addShader(FlxG.camera, "godray");
 			var easteregg:String = FlxG.save.data.psychDevsEasterEgg;
 			if (easteregg == null) easteregg = '';
 			easteregg = easteregg.toUpperCase();
