@@ -120,8 +120,6 @@ class MasterFreeplayState extends MusicBeatState
 		add(cooltext);
 		cooltext.y = 125;
 
-		addTouchPad("LEFT_RIGHT", "A_B");
-
 		super.create();
 	}
 	
