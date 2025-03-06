@@ -156,7 +156,7 @@ class MasterFreeplayState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			accepted = true;
 			
-			MusicBeatState.switchState(new states.FreeplayState());
+			MusicBeatState.switchState(new menus.FreeplayState());
 		}
 
 		if(controls.BACK)
