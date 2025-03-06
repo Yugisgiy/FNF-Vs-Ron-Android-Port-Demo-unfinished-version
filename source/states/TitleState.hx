@@ -160,12 +160,6 @@ class TitleState extends MusicBeatState
 			startIntro();
 		});
 		#end
-		addShader(FlxG.camera, "chromatic aberration");
-		addShader(FlxG.camera, "colorizer");
-		var chromeOffset = (ClientPrefs.rgbintense/350);
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
-		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
-		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 	}
 
 	function startIntro()
@@ -199,7 +193,6 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
 
-		Conductor.changeBPM(titleJSON.bpm);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite();
@@ -222,7 +215,6 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		swagShader = new ColorSwap();
 		gfDance = new FlxSprite();
 
 		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
@@ -231,7 +223,6 @@ class TitleState extends MusicBeatState
 		gfDance.scale.set(0.5,0.5);
 		gfDance.x += 320;
 		gfDance.y -= 200;
-		gfDance.shader = swagShader.shader;
 		add(gfDance);
 
 		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
