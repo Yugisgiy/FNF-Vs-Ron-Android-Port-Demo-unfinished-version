@@ -47,7 +47,6 @@ class MasterFreeplayState extends MusicBeatState
 		FlxG.cameras.reset(cameraWhat);
 		FlxG.cameras.add(cameraText);
 		FlxCamera.defaultCameras = [cameraWhat];
-		CustomFadeTransition.nextCamera = cameraText;
 		
 		bg = new FlxSprite();
 		bg.frames = Paths.getSparrowAtlas('freeplaymenu/mainbgAnimate');
