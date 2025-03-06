@@ -413,8 +413,6 @@ class TitleState extends MusicBeatState
 		}
 
 		{
-			if(controls.UI_LEFT) swagShader.hue -= elapsed * 0.1;
-			if(controls.UI_RIGHT) swagShader.hue += elapsed * 0.1;
 		}
 
 		if (!pressedEnter && !pressedSkip && !transitioning && skippedIntro)
