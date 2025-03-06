@@ -59,7 +59,6 @@ class TitleState extends MusicBeatState
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
 	var time:Float = 0;
-	var chromeOffset = (ClientPrefs.rgbintense/350);
 	var curWacky:Array<String> = [];
 
 	var logoBl:FlxSprite;
@@ -70,7 +69,6 @@ class TitleState extends MusicBeatState
 	var titleText:FlxSprite;
 	var animbarScrt:FlxBackdrop;
 	var animbarScrb:FlxBackdrop;
-	var swagShader:ColorSwap = null;
 
 	var wackyImage:FlxSprite;
 
@@ -165,12 +163,7 @@ class TitleState extends MusicBeatState
 			startIntro();
 		});
 		#end
-		addShader(FlxG.camera, "chromatic aberration");
-		addShader(FlxG.camera, "colorizer");
-		var chromeOffset = (ClientPrefs.rgbintense/350);
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
-		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
-		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+
 	}
 
 	function startIntro()
@@ -183,7 +176,7 @@ class TitleState extends MusicBeatState
 
 			FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 1, new FlxPoint(0, -1), {asset: diamond, width: 32, height: 32},
 				new FlxRect(-300, -300, FlxG.width * 1.8, FlxG.height * 1.8));
-			FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1),
+			FlxTransitionableState.defaultTransOut = new TransitionData(FADE, lxColor.BLACK, 0.7, new FlxPoint(0, 1),
 				{asset: diamond, width: 32, height: 32}, new FlxRect(-300, -300, FlxG.width * 1.8, FlxG.height * 1.8));
 
 			transIn = FlxTransitionableState.defaultTransIn;
@@ -354,8 +347,6 @@ class TitleState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		time += elapsed;
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
-		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
 		if (skippedIntro) {
 			logoBl.angle = Math.sin(-time*5)/8;
 			logoBi.angle = logoBl.angle;
@@ -454,8 +445,6 @@ class TitleState extends MusicBeatState
 	function fuckyou(){
 		#if desktop
 		MusicBeatState.switchState(new menus.MainMenuState());
-		#else
-		MusicBeatState.switchState(new menus.PiracyScreen());
 		#end
 	}
 
@@ -582,7 +571,6 @@ class TitleState extends MusicBeatState
 			remove(ngSpr);
 			remove(credGroup);
 			FlxG.camera.flash(FlxColor.WHITE, 4);
-			addShader(FlxG.camera, "godray");
 			var easteregg:String = FlxG.save.data.psychDevsEasterEgg;
 			if (easteregg == null) easteregg = '';
 			easteregg = easteregg.toUpperCase();
