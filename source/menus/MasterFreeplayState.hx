@@ -1,6 +1,5 @@
 package menus;
 
-import misc.CustomFadeTransition;
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.util.FlxColor;
@@ -15,8 +14,8 @@ import flixel.input.gamepad.FlxGamepad;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import menus.FreeplayState;
-import important.Controls;
+import states.FreeplayState;
+import backend.Controls;
 
 using StringTools;
 
@@ -37,7 +36,6 @@ class MasterFreeplayState extends MusicBeatState
 	var cooltext:FlxText;
 	var cameraWhat:FlxCamera;
 	var cameraText:FlxCamera;
-	var chromeOffset = (ClientPrefs.rgbintense/350);
 	var time:Float = 0;
 	var loBg:FlxSprite;
 	var loBgt:FlxSprite;
@@ -68,7 +66,6 @@ class MasterFreeplayState extends MusicBeatState
 		vimage.scale.set(0.5,0.5);
 		vimage.scrollFactor.set();
 		vimage.screenCenter();
-		vimage.antialiasing = ClientPrefs.globalAntialiasing;
 		vimage.cameras = [cameraText];
 		add(vimage);
 		
@@ -77,7 +74,6 @@ class MasterFreeplayState extends MusicBeatState
 		image.scrollFactor.set();
 		image.screenCenter();
 		image.ID = 0;
-		image.antialiasing = ClientPrefs.globalAntialiasing;
 		image.cameras = [cameraText];
 		add(image);
 
@@ -99,7 +95,6 @@ class MasterFreeplayState extends MusicBeatState
 		image.scrollFactor.set();
 		image.screenCenter();
 		image.ID = 0;
-		image.antialiasing = ClientPrefs.globalAntialiasing;
 		image.cameras = [cameraText];
 		add(image);
 
@@ -108,7 +103,6 @@ class MasterFreeplayState extends MusicBeatState
 		classicImage.scrollFactor.set();
 		classicImage.screenCenter();
 		classicImage.ID = 1;
-		classicImage.antialiasing = ClientPrefs.globalAntialiasing;
 		classicImage.y += 100;
 		classicImage.cameras = [cameraText];
 		add(classicImage);
@@ -118,7 +112,6 @@ class MasterFreeplayState extends MusicBeatState
 		extraImage.scrollFactor.set();
 		extraImage.screenCenter();
 		extraImage.ID = 2;
-		extraImage.antialiasing = ClientPrefs.globalAntialiasing;
 		extraImage.cameras = [cameraText];
 		add(extraImage);
 		changeSelection(0);
@@ -131,11 +124,6 @@ class MasterFreeplayState extends MusicBeatState
 		add(cooltext);
 		cooltext.y = 125;
 
-		addShader(cameraText, "chromatic aberration");
-		addShader(cameraText, "fake CRT");
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
-		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
-		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 		super.create();
 	}
 	
@@ -144,8 +132,6 @@ class MasterFreeplayState extends MusicBeatState
 	{
 		time += elapsed;
 		vimage.color = bg.color;
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
-		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
 		cooltext.y += Math.sin(time*4)/2;
 		switch(curSelectedMaster) {
 			case 0:
