@@ -4,10 +4,10 @@ import misc.CustomFadeTransition;
 #if desktop
 import important.Discord.DiscordClient;
 #end
-import important.Highscore;
-import important.Song;
-import gameassets.HealthIcon;
-import editors.ChartingState;
+import backend.Highscore;
+import backend.Song;
+import objects.HealthIcon;
+import states.editors.ChartingState;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -23,9 +23,9 @@ import flixel.tweens.FlxTween;
 import flixel.effects.particles.FlxEmitter;
 import flixel.effects.particles.FlxParticle;
 import lime.utils.Assets;
-import flixel.sound.FlxSound;
+import flixel.system.FlxSound;
 import openfl.utils.Assets as OpenFlAssets;
-import important.WeekData;
+import backend.WeekData;
 
 using StringTools;
 
