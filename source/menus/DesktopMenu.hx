@@ -31,7 +31,7 @@ class DesktopMenu extends MusicBeatState
 		"discord" => "https://discord.gg/ron-874366610918473748",
 		"random" => "https://www.facebook.com",
 		"settings" => new options.OptionsState(),
-		"freeplay" => new states.FreeplayState(),
+		"freeplay" => new menus.MasterFreeplayState(),
 		"story mode" => "story mode is idiot",
 		"credits" => new states.CreditsState()
 	];
