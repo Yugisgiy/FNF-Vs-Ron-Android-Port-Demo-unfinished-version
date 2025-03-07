@@ -21,7 +21,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.text.FlxText;
-import shaders.flixel.system.FlxShader;
+import menus.Shaders.FlxShader;
 using StringTools;
 
 var rainbowscreen:FlxBackdrop;
