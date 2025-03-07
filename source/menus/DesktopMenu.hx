@@ -21,6 +21,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.text.FlxText;
+import flixel.graphics.shader.FlxShader;
 using StringTools;
 
 var rainbowscreen:FlxBackdrop;
@@ -48,6 +49,7 @@ class DesktopMenu extends MusicBeatState
 	var ywindow:Float = FlxG.height/2-203;
 	var tweening:Bool = false;
 	var transitioningStory:Bool = false;
+	var shader:FlxShader;
 	override function create() {
 
 		#if desktop
@@ -145,6 +147,18 @@ class DesktopMenu extends MusicBeatState
 		FlxG.cameras.reset(camWhat);
 		FlxG.cameras.add(camText);
 		FlxCamera.defaultCameras = [camWhat];
+
+		shader = new FlxShader();
+		shader.load("assets/images/shaders/chromatic aberration.frag");  // Ensure you have the shader file in the right location
+		background.setShaders([shader]);
+
+		shader = new FlxShader();
+		shader.load("assets/images/shaders/fake CRT.frag");  // Ensure you have the shader file in the right location
+		background.setShaders([shader]);
+
+		shader = new FlxShader();
+		shader.load("assets/images/shaders/8bitcolor.frag");  // Ensure you have the shader file in the right location
+		background.setShaders([shader]);
 		super.create();
 	}
 	override function update(elapsed:Float) {
