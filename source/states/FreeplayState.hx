@@ -1,13 +1,9 @@
-package menus;
+package states;
 
-import misc.CustomFadeTransition;
-#if desktop
-import important.Discord.DiscordClient;
-#end
-import important.Highscore;
-import important.Song;
-import gameassets.HealthIcon;
-import editors.ChartingState;
+import backend.Highscore;
+import backend.Song;
+import objects.HealthIcon;
+import states.editors.ChartingState;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -23,9 +19,9 @@ import flixel.tweens.FlxTween;
 import flixel.effects.particles.FlxEmitter;
 import flixel.effects.particles.FlxParticle;
 import lime.utils.Assets;
-import flixel.sound.FlxSound;
+import flixel.system.FlxSound;
 import openfl.utils.Assets as OpenFlAssets;
-import important.WeekData;
+import backend.WeekData;
 
 using StringTools;
 
@@ -59,7 +55,6 @@ class FreeplayState extends MusicBeatState
 	var colorTween:FlxTween;
 	var camWhat:FlxCamera;
 	var camText:FlxCamera;
-	var chromeOffset = (ClientPrefs.rgbintense/350);
 	var hasAccepted:Bool = false;
 	public static var mode:String = 'main';
 
@@ -294,8 +289,6 @@ class FreeplayState extends MusicBeatState
 		text.scrollFactor.set();
 		add(text);
 		
-		var chromeOffset = (ClientPrefs.rgbintense/350);
-		shadering();
 		
 		var modeText = new FlxText(10, 10, 0, FreeplayState.mode.toUpperCase(), 48);
 		modeText.setFormat(Paths.font("w95.otf"), 48, FlxColor.WHITE, LEFT);
@@ -354,9 +347,6 @@ class FreeplayState extends MusicBeatState
 		}
 
 		time += elapsed;
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
-		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
-
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 24, 0, 1)));
 		lerpRating = FlxMath.lerp(lerpRating, intendedRating, CoolUtil.boundTo(elapsed * 12, 0, 1));
 
